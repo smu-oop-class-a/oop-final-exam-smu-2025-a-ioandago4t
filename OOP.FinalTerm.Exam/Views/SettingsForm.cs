@@ -47,10 +47,18 @@ namespace OOP.FinalTerm.Exam
         {
             try
             {
-                //TODO: Students will implement this method to load directors into dgvDirectors using _directorRepository.GetAllDirectors()
+                
                 //refer to LoadMoviesToGrid() method for guidance
                 //hide director id
-               //dgvDirectors.DataSource = 
+                //dgvDirectors.DataSource = 
+                var directors = _directorRepository.GetAllDirectors();
+                dgvDirectors.DataSource = directors;
+
+                // Hide the ID column (optional but recommended)
+                if (dgvDirectors.Columns.Contains("Id"))
+                {
+                    dgvDirectors.Columns["Id"].Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -220,5 +228,10 @@ namespace OOP.FinalTerm.Exam
             }
         }
         #endregion
+
+        private void dgvMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
